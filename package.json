@@ -1,0 +1,8 @@
+{
+  "name": "filament-passkeys",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "@simplewebauthn/browser": "^8.0.2"
+  }
+}
