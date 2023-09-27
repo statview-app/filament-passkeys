@@ -58,3 +58,7 @@ class AdminPanel extends PanelProvider
     }    
 }
 ```
+
+## Credits
+Inspired and created by following the following article:
+https://blog.joe.codes/implementing-passkey-authentication-in-your-laravel-app
