@@ -11,6 +11,11 @@ Run the migrations
 php artisan migrate
 ```
 
+Run the assets command of Filament
+```bash
+php artisan filament:assets
+```
+
 Add the `HasPasskeys` trait to the user mode
 
 ```php
