@@ -1,6 +1,7 @@
 {
     "name": "statview/filament-passkeys",
     "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Statview\\Passkeys\\": "src/"
