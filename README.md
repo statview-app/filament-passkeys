@@ -49,7 +49,6 @@ Add our plugin to your Filament context(s)
 ```php
 <?php
 
-use Filament\PanelProvider;
 use Statview\Passkeys\PasskeysPlugin;
 
 class AdminPanel extends PanelProvider
