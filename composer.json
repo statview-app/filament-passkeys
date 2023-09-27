@@ -1,5 +1,6 @@
 {
     "name": "statview/filament-passkeys",
+    "type": "library",
     "autoload": {
         "psr-4": {
             "Statview\\Passkeys\\": "src/"
@@ -14,5 +15,14 @@
     "require": {
         "illuminate/support": "^10",
         "web-auth/webauthn-lib": "^4.7"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Statview\\Passkeys\\PasskeysServiceProvider"
+            ]
+        }
     }
 }

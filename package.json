@@ -3,6 +3,19 @@
   "version": "1.0.0",
   "license": "MIT",
   "dependencies": {
-    "@simplewebauthn/browser": "^8.0.2"
+    "@simplewebauthn/browser": "^8.0.2",
+    "axios": "^1.5.1"
+  },
+  "scripts": {
+    "build": "bun build resources/js/passkeys.js --outdir=dist/js",
+    "watch": "bun run build --watch"
+  },
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
   }
 }
