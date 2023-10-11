@@ -36,12 +36,12 @@ class RegistrationController extends Controller
             id: parse_url(config('app.url'), PHP_URL_HOST),
         );
 
-        $email = auth()->user()->email;
+        $user = auth()->user();
 
         $userEntity = PublicKeyCredentialUserEntity::create(
-            name: $email,
-            id: $email,
-            displayName: $email,
+            name: $user->email,
+            id: $user->id,
+            displayName: $user->name,
         );
 
         $challenge = random_bytes(16);

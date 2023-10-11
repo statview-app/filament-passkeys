@@ -5,15 +5,11 @@ namespace Statview\Passkeys;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Illuminate\Support\ServiceProvider;
-use Livewire\Livewire;
-use Statview\Passkeys\Pages\Auth\PasskeyLogin;
 
 class PasskeysServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        Livewire::component('passkeys::passkey-login', PasskeyLogin::class);
-
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 
@@ -23,7 +19,8 @@ class PasskeysServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'passkeys');
 
         FilamentAsset::register([
-            Js::make('passkeys-script', __DIR__.'/../dist/js/passkeys.js'),
+            Js::make('passkey-login', __DIR__.'/../dist/js/passkey-login.js')->loadedOnRequest(),
+            Js::make('passkey-register', __DIR__.'/../dist/js/passkey-register.js')->loadedOnRequest(),
         ], 'statview/filament-passkeys');
     }
 }

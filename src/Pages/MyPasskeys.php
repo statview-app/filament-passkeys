@@ -26,7 +26,7 @@ class MyPasskeys extends Page implements HasTable, HasActions
         return [
             BasicAction::make('add_passkey')
                 ->label('Create passkey')
-                ->alpineClickHandler('registerPasskey'),
+                ->alpineClickHandler('startPasskeyRegistration'),
         ];
     }
 

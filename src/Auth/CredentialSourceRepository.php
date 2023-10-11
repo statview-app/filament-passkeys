@@ -20,14 +20,14 @@ class CredentialSourceRepository implements PublicKeyCredentialSourceRepository
             return null;
         }
 
-        return PublicKeyCredentialSource::createFromArray($passkey->public_key);
+        return PublicKeyCredentialSource::createFromArray($passkey->credential_data);
     }
 
     public function findAllForUserEntity(PublicKeyCredentialUserEntity $publicKeyCredentialUserEntity): array
     {
         return User::query()
             ->with('passkeys')
-            ->where('id', $publicKeyCredentialUserEntity->getId())
+            ->where('users.id', $publicKeyCredentialUserEntity->id)
             ->first()
             ->passkeys
             ->toArray();
@@ -36,14 +36,19 @@ class CredentialSourceRepository implements PublicKeyCredentialSourceRepository
     public function saveCredentialSource(PublicKeyCredentialSource $publicKeyCredentialSource): void
     {
         $user = User::query()
-            ->where('email', $publicKeyCredentialSource->getUserHandle())
-            ->firstOrFail();
+            ->findOrFail($publicKeyCredentialSource->userHandle);
 
-        $user->passkeys()->save(
-            new Passkey([
-                'credential_id' => $publicKeyCredentialSource->getPublicKeyCredentialId(),
-                'public_key' => $publicKeyCredentialSource->jsonSerialize(),
-            ])
-        );
+        $passkey = $user->passkeys()
+            ->firstWhere('credential_id', base64_encode($publicKeyCredentialSource->publicKeyCredentialId));
+
+        if (! $passkey) {
+            $passkey = $user->passkeys()->create([
+                'credential_id' => $publicKeyCredentialSource->publicKeyCredentialId,
+            ]);
+        }
+
+        $passkey->update([
+            'credential_data' => $publicKeyCredentialSource->jsonSerialize(),
+        ]);
     }
 }

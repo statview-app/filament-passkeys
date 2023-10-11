@@ -11,12 +11,11 @@ class Passkey extends Model
 {
     protected $fillable = [
         'credential_id',
-        'public_key',
+        'credential_data',
     ];
 
     protected $casts = [
-        'credential_id' => 'encrypted',
-        'public_key' => 'encrypted:json',
+        'credential_data' => 'json',
     ];
 
     public function user(): BelongsTo

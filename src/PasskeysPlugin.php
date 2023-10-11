@@ -5,6 +5,8 @@ namespace Statview\Passkeys;
 use Filament\Contracts\Plugin;
 use Filament\Navigation\MenuItem;
 use Filament\Panel;
+use Filament\Support\Assets\Js;
+use Filament\Support\Facades\FilamentAsset;
 use Illuminate\Contracts\View\View;
 use Statview\Passkeys\Pages\MyPasskeys;
 
