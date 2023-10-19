@@ -12,6 +12,8 @@ use Statview\Passkeys\Pages\MyPasskeys;
 
 class PasskeysPlugin implements Plugin
 {
+    public bool $shouldRenderUserMenuItem = false;
+
     public function getId(): string
     {
         return 'passkeys';
@@ -27,12 +29,25 @@ class PasskeysPlugin implements Plugin
                 MenuItem::make()
                     ->label('My passkeys')
                     ->icon('heroicon-o-lock-closed')
-                    ->url(fn () => MyPasskeys::getUrl()),
+                    ->url(fn () => MyPasskeys::getUrl())
+                    ->visible(fn () => $panel->getPlugin('passkeys')->getShouldRenderUserMenuItem()),
             ])
             ->renderHook(
                 name: 'panels::auth.login.form.after',
                 hook: fn (): View => view('passkeys::passkey-login'),
             );
+    }
+
+    public function shouldRenderUserMenuItem($flag = true): static
+    {
+        $this->shouldRenderUserMenuItem = $flag;
+
+        return $this;
+    }
+
+    public function getShouldRenderUserMenuItem(): bool
+    {
+        return $this->shouldRenderUserMenuItem;
     }
 
     public function boot(Panel $panel): void

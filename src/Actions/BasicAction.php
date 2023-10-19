@@ -21,9 +21,4 @@ class BasicAction extends Action
 
         return $this;
     }
-
-    public function getAlpineClickHandler(): ?string
-    {
-        return $this->alpineClickHandler;
-    }
 }
