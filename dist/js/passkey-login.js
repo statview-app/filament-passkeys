@@ -346,7 +346,7 @@ var WebAuthnAbortService = new BaseWebAuthnAbortService;
 var attachments = ["cross-platform", "platform"];
 
 // resources/js/passkey-login.js
-(function() {
+window.loginWithPasskey = function() {
   fetch("/passkeys/login/options", {
     method: "POST",
     headers: {
@@ -373,4 +373,4 @@ var attachments = ["cross-platform", "platform"];
     }).catch(() => {
     });
   });
-})();
+};

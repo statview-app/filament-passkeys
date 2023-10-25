@@ -2,7 +2,9 @@
 
 namespace Statview\Passkeys;
 
+use App\Filament\Pages\Auth\Login;
 use Filament\Contracts\Plugin;
+use Filament\Forms\Components\TextInput;
 use Filament\Navigation\MenuItem;
 use Filament\Panel;
 use Filament\Support\Assets\Js;
@@ -52,6 +54,17 @@ class PasskeysPlugin implements Plugin
 
     public function boot(Panel $panel): void
     {
+        if (request()->route()->getName() === 'filament.' . $panel->getId() . '.auth.login') {
+            TextInput::configureUsing(function (TextInput $component) {
+                if ($component->getName() !== 'email') {
+                    return;
+                }
+
+                $component->extraInputAttributes([
+                    'autocomplete' => 'username webauthn',
+                ]);
+            }, null, true);
+        }
     }
 
     public static function make(): static

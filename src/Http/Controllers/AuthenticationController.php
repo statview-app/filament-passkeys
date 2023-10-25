@@ -41,7 +41,6 @@ class AuthenticationController extends Controller
 
         $pkRequestOptions->userVerification = 'required';
         $pkRequestOptions->rpId = parse_url(config('app.url'), PHP_URL_HOST);
-        //$pkRequestOptions->rpId = 'testje 1234';
 
         $serializedOptions = $pkRequestOptions->jsonSerialize();
 

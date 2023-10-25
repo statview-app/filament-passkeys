@@ -1,6 +1,6 @@
 import { startAuthentication } from "@simplewebauthn/browser";
 
-(function () {
+window.loginWithPasskey = function () {
     fetch('/passkeys/login/options', {
         method: 'POST',
         headers: {
@@ -45,4 +45,4 @@ import { startAuthentication } from "@simplewebauthn/browser";
                     .send();*/
             });
     });
-})();
+}
