@@ -57,7 +57,7 @@ class AdminPanel extends PanelProvider
     {
         return $panel
             // ...
-            ->plugin(PasskeysPlugin::class)
+            ->plugin(PasskeysPlugin::make())
             // ...
     }    
 }
