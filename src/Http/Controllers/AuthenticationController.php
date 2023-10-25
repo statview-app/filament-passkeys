@@ -39,6 +39,10 @@ class AuthenticationController extends Controller
     {
         $pkRequestOptions = PublicKeyCredentialRequestOptions::create(random_bytes(length: 32));
 
+        $pkRequestOptions->userVerification = 'required';
+        $pkRequestOptions->rpId = parse_url(config('app.url'), PHP_URL_HOST);
+        //$pkRequestOptions->rpId = 'testje 1234';
+
         $serializedOptions = $pkRequestOptions->jsonSerialize();
 
         $request->session()->put(

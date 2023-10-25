@@ -39,10 +39,10 @@ import { startAuthentication } from "@simplewebauthn/browser";
                 });
             })
             .catch(() => {
-                new FilamentNotification()
+                /*new FilamentNotification()
                     .title('Error authenticating')
                     .danger()
-                    .send();
+                    .send();*/
             });
     });
 })();

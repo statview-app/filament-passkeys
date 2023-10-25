@@ -371,7 +371,6 @@ var attachments = ["cross-platform", "platform"];
         new FilamentNotification().title("Error sending verification request").danger().send();
       });
     }).catch(() => {
-      new FilamentNotification().title("Error authenticating").danger().send();
     });
   });
 })();
