@@ -4,6 +4,6 @@
     class="flex justify-center"
 >
     <x-filament::link tag="button" x-on:click="window.loginWithPasskey()">
-        Login with passkey
+        {{ __('passkeys::passkeys.login_with_passkeys') }}
     </x-filament::link>
 </div>

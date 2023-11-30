@@ -10,7 +10,7 @@
     @endphp
 
     @if(count($state) === 0)
-        <p class="text-gray-600 text-sm">Je hebt nog geen passkeys aangemaakt. Klik op onderstaande button om er eentje toe te voegen.</p>
+        <p class="text-gray-600 text-sm">{{ __('passkeys::passkeys.no_passkeys') }}</p>
     @endif
 
     <ul class="grid grid-cols-1 gap-2" x-load-js="[@js(\Filament\Support\Facades\FilamentAsset::getScriptSrc('passkey-register', 'statview/filament-passkeys'))]">

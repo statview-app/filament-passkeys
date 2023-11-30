@@ -24,6 +24,7 @@ class PasskeysServiceProvider extends ServiceProvider
     {
         $this->loadRoutesFrom(__DIR__.'/../routes/passkeys.php');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'passkeys');
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'passkeys');
 
         $this->publishes([
             __DIR__.'/../database/migrations/2023_09_27_000000_create_passkeys_table.php' => database_path('migrations/2023_09_27_000000_create_passkeys_table.php'),
