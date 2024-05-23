@@ -25,8 +25,8 @@ class Passkeys extends Field
         });
 
         $this->registerActions([
-            fn (Passkeys $component): Action => $component->getDeleteAction(),
-            fn (Passkeys $component): Action => $component->getRegisterAction(),
+            fn(Passkeys $component): Action => $component->getDeleteAction(),
+            fn(Passkeys $component): Action => $component->getRegisterAction(),
         ]);
     }
 
@@ -47,7 +47,7 @@ class Passkeys extends Field
     public function getRegisterAction(): Action
     {
         return Action::make('register')
-            ->label('Passkey aanmaken')
+            ->label(__('passkeys::passkeys.create_passkey'))
             ->color('gray')
             ->icon('heroicon-o-plus')
             ->action(function (Passkeys $component) {
@@ -60,7 +60,7 @@ class Passkeys extends Field
     public function getDeleteAction(): Action
     {
         return Action::make('delete')
-            ->label('Verwijderen')
+            ->label(__('passkeys::passkeys.delete_passkey'))
             ->icon('heroicon-m-trash')
             ->color(Color::Red)
             ->action(function (array $arguments, Passkeys $component): void {

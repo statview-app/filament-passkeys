@@ -11,7 +11,6 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
-use Statview\Passkeys\Actions\BasicAction;
 
 class MyPasskeys extends Page implements HasTable, HasActions
 {
@@ -24,7 +23,7 @@ class MyPasskeys extends Page implements HasTable, HasActions
     protected function getHeaderActions(): array
     {
         return [
-            BasicAction::make('add_passkey')
+            Action::make('add_passkey')
                 ->label('Create passkey')
                 ->alpineClickHandler('startPasskeyRegistration'),
         ];

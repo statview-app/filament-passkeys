@@ -60,10 +60,10 @@ class RegistrationController extends Controller
             Algorithms::COSE_ALGORITHM_ED256,
             Algorithms::COSE_ALGORITHM_ED512,
         ])
-        ->map(
-            fn ($algorithm) => PublicKeyCredentialParameters::create('public-key', $algorithm)
-        )
-        ->toArray();
+            ->map(
+                fn($algorithm) => PublicKeyCredentialParameters::create('public-key', $algorithm)
+            )
+            ->toArray();
 
         $pkCreationOptions = PublicKeyCredentialCreationOptions::create(
             rp: $rpEntity,
@@ -71,19 +71,19 @@ class RegistrationController extends Controller
             challenge: $challenge,
             pubKeyCredParams: $supportedPublicKeyParams,
         )
-        ->setAttestation(
-            PublicKeyCredentialCreationOptions::ATTESTATION_CONVEYANCE_PREFERENCE_NONE
-        )
-        ->setAuthenticatorSelection(
-            AuthenticatorSelectionCriteria::create(),
-        )
-        ->setExtensions(AuthenticationExtensionsClientInputs::createFromArray([
-            'credProps' => true,
-        ]));
+            ->setAttestation(
+                PublicKeyCredentialCreationOptions::ATTESTATION_CONVEYANCE_PREFERENCE_NONE
+            )
+            ->setAuthenticatorSelection(
+                AuthenticatorSelectionCriteria::create(),
+            )
+            ->setExtensions(AuthenticationExtensionsClientInputs::createFromArray([
+                'credProps' => true,
+            ]));
 
         $serializedOptions = $pkCreationOptions->jsonSerialize();
 
-        if (! isset($serializedOptions['excludeCredentials'])) {
+        if (!isset($serializedOptions['excludeCredentials'])) {
             $serializedOptions['excludeCredentials'] = [];
         }
 
@@ -122,7 +122,7 @@ class RegistrationController extends Controller
 
         $authenticatorAttestationResponse = $publicKeyCredential->getResponse();
 
-        if (! $authenticatorAttestationResponse instanceof AuthenticatorAttestationResponse) {
+        if (!$authenticatorAttestationResponse instanceof AuthenticatorAttestationResponse) {
             throw ValidationException::withMessages([
                 'email' => 'Invalid response type'
             ]);
@@ -142,8 +142,8 @@ class RegistrationController extends Controller
 
         Auth::login($user);
 
-        return [
+        return response()->json([
             'verified' => true,
-        ];
+        ]);
     }
 }
