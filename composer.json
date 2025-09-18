@@ -1,5 +1,6 @@
 {
     "name": "statview/filament-passkeys",
+    "description": "A Laravel Filament package for Passkey authentication support",
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -14,7 +15,7 @@
         }
     ],
     "require": {
-        "illuminate/support": "^10|^11",
+        "illuminate/support": "^10|^11|^12",
         "web-auth/webauthn-lib": "^4.7"
     },
     "minimum-stability": "dev",
